@@ -165,11 +165,6 @@
 ;;(setq scroll-conservatively 50)
 ;;(setq scroll-preserve-screen-position 't) ; no jumps at bottom/top
 
-;; Fringe settings
-(fringe-mode '(0 . 5)) ;; constraining text to the left
-;; (setq-default indicate-buffer-boundaries 'left) ;; only show on the left
-(setq-default indicate-empty-lines t) ;; Explicitly show the end of a buffer
-
 ;; Display file size/time in mode-line
 ;; (setq display-time-24hr-format t) ;; 24-hour format
 ;; (display-time-mode t) ;; show time in mode-line
@@ -196,15 +191,21 @@
 
 
 
-;;** Text scaling
+;;;; Text scaling
+
 (global-set-key (kbd "C-M-=")         'default-text-scale-increase)
 (global-set-key (kbd "C-M--")         'default-text-scale-decrease)
 
 
+;;;; Fringe settings
+
+(fringe-mode '(5 . 5)) ;; constraining text to the left
+;; (setq-default indicate-buffer-boundaries 'left) ;; only show on the left
+(setq-default indicate-empty-lines t) ;; Explicitly show the end of a buffer
 
 
+;;;; Window navigation: M-arrow-keys
 
-;; Easy transition between windows: M-arrow-keys
 ;; except in the org mode (which uses the keybindings as well)
 (if (equal nil (equal major-mode 'org-mode))
     (windmove-default-keybindings 'meta))
@@ -292,7 +293,11 @@
               "The region has %d words." count))))))
 
 
-
+;;;; Flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+;(global-flycheck-mode)
+(setq flycheck-checker-error-threshold 1000) ;; or switch back to default 400
+(setq flycheck-pylintrc ".pylintrc")
 
 ;;;; Major modes
 
