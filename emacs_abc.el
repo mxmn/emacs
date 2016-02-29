@@ -298,6 +298,9 @@
 ;(global-flycheck-mode)
 (setq flycheck-checker-error-threshold 1000) ;; or switch back to default 400
 (setq flycheck-pylintrc ".pylintrc")
+(setq flycheck-keymap-prefix "^C*") ;; changing the flycheck prefix to C-c *
+
+
 
 ;;;; Major modes
 
@@ -308,3 +311,6 @@
 ;; set python-mode the default for cython .pyx / .pxd files
 (setq auto-mode-alist (cons '("\\.pyx$" . python-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.pxd$" . python-mode) auto-mode-alist))
+
+;; markdown-mode
+(setq auto-mode-alist (cons '("\\.md$" . markdown-mode) auto-mode-alist))

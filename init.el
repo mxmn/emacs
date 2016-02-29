@@ -50,8 +50,8 @@
 
 ;; Window size
 (when window-system
-  (set-frame-size (selected-frame) 80 71))
-(setq default-frame-alist '((width . 80)(height . 71)))
+  (set-frame-size (selected-frame) 86 71))
+(setq default-frame-alist '((width . 86)(height . 71)))
 
 
 
@@ -72,7 +72,9 @@
      helm
      ;;helm-projectile
      helm-descbinds
-     flycheck))
+     flycheck
+     markdown-mode
+     ))
 
 (defun mxn-install-packages ()
   "Install only the sweetest of packages."
@@ -92,9 +94,11 @@
 
 ;;;; final ones
 (add-to-list 'load-path "~/conf/emacs24")
-(load-library "emacs_org.el")
+(load-library "emacs_org2.el")
 (load-library "emacs_idl.el")
-(load-library "emacs_python4.el")
+;;(load-library "emacs_python4.el")
+(load-library "emacs_pyconda.el")
+
 (load-library "emacs_latex.el")
 
 (load-library "tobesorted.el")
