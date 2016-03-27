@@ -34,11 +34,7 @@
 
 
 
-;;;; Identity and early user interface setup
-
-;; Identity
-(setq user-full-name "Maxim Neumann"
-      user-mail-address "neumann.maxim@gmail.com")
+;;;; Early user interface setup
 
 
 ;; Initial window setup, to be done right at the beginning
@@ -91,6 +87,9 @@
 
 (add-to-list 'load-path "~/conf/emacs")
 (load-library "emacs_abc")
+
+;;; personal/private setup (identity, local directories)
+(load-library "emacs_personal")
 
 ;;;; final ones
 (add-to-list 'load-path "~/conf/emacs24")

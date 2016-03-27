@@ -298,7 +298,7 @@
 ;(global-flycheck-mode)
 (setq flycheck-checker-error-threshold 1000) ;; or switch back to default 400
 (setq flycheck-pylintrc ".pylintrc")
-(setq flycheck-keymap-prefix "^C*") ;; changing the flycheck prefix to C-c *
+(setq flycheck-keymap-prefix (kbd "C-c *")) ;; changing the flycheck prefix to C-c *
 
 
 
