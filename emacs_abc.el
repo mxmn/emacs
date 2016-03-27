@@ -1,5 +1,7 @@
 ;;; emacs_abs.el --- basic configuration
 ;;
+;;; Commentary:
+;;
 ;; Author: Maxim Neumann
 ;;
 ;; Patched/stolen from many different sources in the time frame 1998-now.
@@ -28,7 +30,7 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
+;;; Code:
 
 ;;;; helm
 
@@ -314,3 +316,6 @@
 
 ;; markdown-mode
 (setq auto-mode-alist (cons '("\\.md$" . markdown-mode) auto-mode-alist))
+
+
+;;; emacs_abc.el ends here

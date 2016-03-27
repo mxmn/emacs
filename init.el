@@ -1,5 +1,7 @@
 ;;; init.el --- Emacs configuration
 ;;
+;;; Commentary:
+;;
 ;; Author: Maxim Neumann
 ;;
 ;; Patched/stolen from many different sources in the time frame 1998-now.
@@ -28,11 +30,10 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;; Code:
 
 ;; Timing emacs startup
 (defvar time-start (current-time))
-
-
 
 ;;;; Early user interface setup
 
@@ -93,7 +94,7 @@
 
 ;;;; final ones
 (add-to-list 'load-path "~/conf/emacs24")
-(load-library "emacs_org2.el")
+(load-library "emacs_org.el")
 (load-library "emacs_idl.el")
 ;;(load-library "emacs_python4.el")
 (load-library "emacs_pyconda.el")
