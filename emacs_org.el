@@ -1,37 +1,42 @@
-;;; emacs_org.el --- Summary
-;;;
+;;; emacs_org.el --- Emacs configuration
+;;
 ;;; Commentary:
-;;;
-;;; org-mode configuration.
-;;;
+;;
+;; org-mode configuration.
+;;
+;; Author: Maxim Neumann
+;;
 ;;; Changelog:
-;;;
-;;; 02/2016 - major rewrite of the org configuration
-;;; ...
-;;; 10/2009 - started
-;;;
-
-;; ;;
-;; ;; mnx, 2/18/16 -- removed!
-;; ;;
-;; ;; provide org-mode path & load org-checklist
-;; (add-to-list 'load-path "~/conf/emacs_old/org/lisp")
-;; (load "~/conf/emacs_old/org/contrib/lisp/org-checklist")
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;              org mode (mn 16.09.09)                ;;;
-;;;              org mode (mn  1/11/10)                ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; 02/2016 - major rewrite of the org configuration
+;; ...
+;; 10/2009 - started
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; This program is free software; you can redistribute it and/or
+;; modify it under the terms of the GNU General Public License as
+;; published by the Free Software Foundation; either version 3, or
+;; (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with this program; see the file COPYING.  If not, write to
+;; the Free Software Foundation, Inc., 51 Franklin Street, Fifth
+;; Floor, Boston, MA 02110-1301, USA.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; Code:
 
 
 ;;;; Init
 
-;(require 'org-install)
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\)$" . org-mode))
-;(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
@@ -49,10 +54,6 @@
 ))
 (setq org-default-notes-file (concat my-org-path "folders.org"))
 
-;; Turn on flyspell mode
-;(add-hook 'org-mode-hook
-;          (lambda ()
-;            (flyspell-mode 1)))
 ;from http://www.newartisans.com/2007/08/using-org-mode-as-a-day-planner.html
 (custom-set-variables
  '(org-agenda-ndays 7)
@@ -62,7 +63,6 @@
  '(org-agenda-skip-scheduled-if-done t)
  '(org-agenda-start-on-weekday nil)
  '(org-reverse-note-order t))
-; '(org-fast-tag-selection-single-key (quote expert))
 
 
 ;;; Refiling!
@@ -70,13 +70,10 @@
 (setq org-completion-use-ido t)
 ; Targets include this file and any file contributing to the agenda - up to 5 levels deep
 (setq org-refile-targets (quote ((org-agenda-files :maxlevel . 5) (nil :maxlevel . 5))))
-;(setq org-refile-targets (quote (("~/documents/org/planner.org") (nil :maxlevel . 5))))
 ; Targets start with the file name - allows creating level 1 tasks
 (setq org-refile-use-outline-path (quote file))
 ; Targets complete in steps so we start with filename, TAB shows the next level of targets etc
 (setq org-outline-path-complete-in-steps t)
-
-
 
 
 
@@ -94,7 +91,6 @@
         ; ("w" "Tasks waiting on something" tags "WAITING/!" ((org-use-tag-inheritance nil)))
         ("R" "Refile Tasks" tags "LEVEL=2+refile" ((org-agenda-todo-ignore-with-date nil)))
         ; ("n" "Next" tags "NEXT-WAITING-CANCELLED/!" nil)
-        ; ("X" "Xtest" todo  "DONE" ((org-agenda-todo-ignore-with-date t)))
         ("P" "All Projects" tags "+project"
          ((org-agenda-todo-ignore-with-date nil)
           (org-agenda-todo-ignore-deadlines nil)
@@ -116,7 +112,6 @@
                  (org-agenda-todo-ignore-scheduled nil)))
           (tags-todo "+work-project")
           (tags-todo "project")
-;;;                                      (tags-todo "+project+work")
           (tags-todo "general")
           (tags-todo "home|finance"
                      ((org-agenda-todo-ignore-with-date t)))
@@ -135,8 +130,6 @@
                       ))))
         ))
       )
-
-
 
 
 ;;;; org-capture
@@ -162,118 +155,51 @@
         ))
 
 (setq org-default-notes-file (concat org-directory "/notes.org"))
-;; (global-set-key (kbd "C-M-r") 'org-remember)
 (global-set-key (kbd "C-M-r") 'org-capture)
 (define-key global-map "\C-cc" 'org-capture)
-
-;; C-c C-c stores the note immediately
-;; (setq org-remember-store-without-prompt t)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;      REMEMBER       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(add-to-list 'load-path "~/LibraryPreferences/Aquamacs Emacs/remember-2.0")
-;(require 'remember)
-
-;(org-remember-insinuate)
-;; (setq remember-annotation-functions '(org-remember-annotation))
-;; (setq remember-handler-functions '(org-remember-handler))
-;; (add-hook 'remember-mode-hook 'org-remember-apply-template)
-
-
-
-
-
-
-
-;; Start clock if a remember buffer includes :CLOCK-IN:
-;; (add-hook 'remember-mode-hook 'my-start-clock-if-needed 'append)
-;; (defun my-start-clock-if-needed ()
-;;   (save-excursion
-;;     (goto-char (point-min))
-;;     (when (re-search-forward " *:CLOCK-IN: *" nil t)
-;;       (replace-match "")
-;;       (org-clock-in))))
-;; I use C-M-r to start org-remember
-;; (global-set-key (kbd "C-M-r") 'org-remember)
-;; (define-key global-map "\C-cr" 'org-remember)
-;; (global-set-key (kbd "<f12>") 'org-agenda)
-;; Keep clocks running
-;; (setq org-remember-clock-out-on-exit nil)
-;; C-c C-c stores the note immediately
-;; (setq org-remember-store-without-prompt t)
-;; (setq org-remember-templates
-;;   '(
-;;          ("Refile" ?r "* TODO %?\n  %U" org-default-notes-file "Refile")
-;;          ("Task" ?t "* TODO %? %^g\n  %U" org-default-notes-file "Tasks")
-;;          ("Next" ?x "* NEXT %? %^g\n  %U" org-default-notes-file "Tasks")
-;;          ("Calendar" ?c "* %?\n  %U" org-default-notes-file "Calendar")
-;;          ("Journal" ?j "* %U %?\n" (concat my-org-path "journal.org" "Journal")
-;;          ("Dnevnik" ?d "* %U %?\n" (concat my-org-path "journal.org" "Dnevnik")
-;;          ("Idea" ?i "* %U %?\n" (concat my-org-path "research.org" "Ideas")
-;;          ("Someday" ?s "* TODO %?\n  %U" org-default-notes-file "Someday")
-;;          ("Work" ?w "* TODO %? :work:\n  %U" org-default-notes-file "Tasks")
-;;          ("Home" ?h "* TODO %? :home:\n  %U" org-default-notes-file "Tasks")
-;;          ("General" ?g "* TODO %? :general:\n  %U" org-default-notes-file "Tasks")
-;;          ("Quote" ?q "* %?\n %U" (concat my-org-path "journal.org" "Quotations")
-;;          ))
-
-;;;;;;;;;;;;;;;;;;;;  finish  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;              org mode (mn 16.09.09)                ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 
 
 ;;;; Misc
 
-
-;;; recent additions (1/11/10)
 ;;; from http://members.optusnet.com.au/~charles57/GTD/mydotemacs.txt
 (setq org-use-fast-todo-selection t)
 
 ;;; custom functions
 (defun gtd-folders ()
     (interactive)
-    (find-file (concat my-org-path "folders.org"))
-)
+    (find-file (concat my-org-path "folders.org")))
+
 (global-set-key (kbd "C-c f") 'gtd-folders)
 (defun gtd-projects ()
     (interactive)
-    (find-file (concat my-org-path "projects.org"))
-)
+    (find-file (concat my-org-path "projects.org")))
+
 (global-set-key (kbd "C-c p") 'gtd-projects)
 (defun gtd-amzn ()
     (interactive)
-    (find-file (concat my-org-path "amzn.org"))
-)
+    (find-file (concat my-org-path "amzn.org")))
+
 (global-set-key (kbd "C-c m") 'gtd-amzn)
 (defun gtd-research ()
     (interactive)
-    (find-file (concat my-org-path "research.org"))
-)
+    (find-file (concat my-org-path "research.org")))
+
 (global-set-key (kbd "C-c r") 'gtd-research)
 (defun gtd-journal ()
     (interactive)
-    (find-file (concat my-org-path "journal.org"))
-)
+    (find-file (concat my-org-path "journal.org")))
+
 (global-set-key (kbd "C-c j") 'gtd-journal)
-;;(defun gtd-someday ()
-;;    (interactive)
-;;    (find-file (concat my-org-path "someday.org")
-;;)
-;;(global-set-key (kbd "C-c s") 'gtd-someday)
+
 
 ;;;Highlight the agenda line under cursor
 (add-hook 'org-agenda-mode-hook  '(lambda () (hl-line-mode 1)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; recent additions (1/16/10)
-;;; from file:///Users/mneumann/Dropbox/docs/sites/08org-mode.html
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;clocking
+;; from file:///Users/mneumann/Dropbox/docs/sites/08org-mode.html
+
+;; clocking
 ;; Change task state to STARTED from TODO when clocking in
 (defun bh/clock-in-to-started (kw)
   "Switch task from TODO to STARTED when clocking in"
@@ -283,7 +209,7 @@
     nil))
 (setq org-clock-in-switch-to-state (quote bh/clock-in-to-started))
 
-;;;;;;;remember
+;; remember
 ;; Start clock in a remember buffer and switch back to previous clocking task on save
 (add-hook 'remember-mode-hook 'org-clock-in 'append)
 (add-hook 'org-remember-before-finalize-hook 'bh/clock-in-interrupted-task)
@@ -300,15 +226,14 @@
 ;; Keep clocks running
 (setq org-remember-clock-out-on-exit nil)
 
-;;;;;;;refile  -- i'm not really using this feature anymore, mn, 5/10/12
-; Use IDO for target completion
+;; refile  -- i'm not really using this feature anymore, mn, 5/10/12
+;; Use IDO for target completion
 (setq org-completion-use-ido t)
 
-; Targets include this file and any file contributing to the agenda - up to 5 levels deep
+;; Targets include this file and any file contributing to the agenda - up to 5 levels deep
 (setq org-refile-targets
                 (quote(
                                  (org-agenda-files :maxlevel . 5)
-;;;                      ("~/Documents/docs/org/someday.org" :maxlevel . 5)
                                  ((concat my-org-path "journal.org") :maxlevel . 5)
                                  (nil :maxlevel . 5))))
 
@@ -325,15 +250,6 @@
 (setq org-agenda-tags-todo-honor-ignore-options t)
 
 
-;;; mn, 5/10/12
-;(setq org-startup-folded t)
-;org-completion-use-ido
-; org-return-follows-link
-; org-todo-keywords
-; org-todo-keyword-faces
-; org-enforce-todo-dependencies
-; org-enforce-todo-checkbox-dependencies
-
 ;;(setq org-todo-keywords
 ;;              '((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
 (setq org-todo-keywords
@@ -345,7 +261,6 @@
 
 
 
-
 ;;;; latex
 
 (require 'ox-latex)
@@ -353,18 +268,7 @@
   (setq org-latex-classes nil))
 
 
-;;; addtional latex classes - mn, 5/14/12
 ;; My custom LaTeX class for Org-mode export. require is needed for it to work.
-;; (require 'org-latex)
-
-
-;; (require 'org-latex)
-;; (unless (boundp 'org-export-latex-classes)
-;;   (setq org-export-latex-classes nil))
-
-
-
-
 (add-to-list 'org-latex-classes
              '("notes"
 "\\documentclass[letter,9pt]{article}
@@ -382,9 +286,6 @@
 \\author{mxn}
 \\newcommand\\foo{bar}"
 ;;               [DEFAULT-PACKAGES]
-;;               [NO-PACKAGES]
-;;               [EXTRA]"
-
 ;;               [NO-DEFAULT-PACKAGES]
 ;;               [NO-PACKAGES]
 ;;               [EXTRA]"
@@ -394,7 +295,7 @@
 ("\\paragraph{%s}" . "\\paragraph*{%s}")
 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
-;; Somebodys custom  class for Org-mode export.
+;; Somebody's custom  class for Org-mode export.
 (add-to-list 'org-latex-classes
              '("mybeamer"
                "\\documentclass[presentation]{beamer}
@@ -405,7 +306,7 @@
                [BEAMER-HEADER-EXTRA]"
                org-beamer-sectioning))
 
-;; Somebodys letter class, for formal letters
+;; Somebody's letter class, for formal letters
 (add-to-list 'org-latex-classes
                                  '("letter"
      "\\documentclass[9pt]{letter}\n
@@ -413,9 +314,7 @@
       \\usepackage[T1]{fontenc}\n
       \\usepackage[scale={0.9}]{geometry}\n
       \\usepackage{color}
-      \\author{mxn2}
-"
-
+      \\author{mxn2}"
      ("\\section{%s}" . "\\section*{%s}")
      ("\\subsection{%s}" . "\\subsection*{%s}")
      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
@@ -424,48 +323,8 @@
 
 
 
+;;;; html
 
-;;;; web-sites
-
-
-;; web-sites with org ;; mn, 5/18/12
-;; (require 'org-publish)
-
-(setq org-publish-project-alist
-      '(
-;;; dynamics - process to html
-        ("jorg-notes"
-         :base-directory "~/docs/sites/jorg/org/"
-;;                      :base-directory (file-truename
-;;                                                                (expand-file-name "~/docs/sites/jorg/org/"))
-         :publishing-directory "~/docs/sites/jorg/public_html/"
-         :base-extension "org"
-         :exclude "org_hdr_level*"
-         :recursive t
-         :publishing-function org-publish-org-to-html
-         :headline-levels 4             ; Just the default for this project.
-         :auto-preamble t
-         )
-;;; static - just copy
-        ("jorg-static"
-         :base-directory "~/docs/sites/jorg/org/"
-;;                      :base-directory (file-truename
-;;                                                                (expand-file-name "~/docs/sites/jorg/org/"))
-         :publishing-directory "~/Dropbox/docs/sites/jorg/public_html/"
-         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-         :recursive t
-         :publishing-function org-publish-attachment
-         )
-;;; publish both (dynamic org-notes, and static org-static)
-        ("jorg" :components ("jorg-notes" "jorg-static"))
-        ))
-
-;; C-x C-e  -- executes the last list statement (in emacs conf files)
-
-;; Now M-x org-publish-project RET org RET publishes everything
-;; recursively to ~/public_html/.
-;; Target directories are created, if they don't yet exist.
-
-;;(setq x  (file-truename (expand-file-name "~/docs/sites/jorg/org/")))
+(setq my-org-html-path (concat my-org-path "html/"))
 
 ;;; emacs_org.el ends here
