@@ -2,8 +2,6 @@
 ;;
 ;;; Commentary:
 ;;
-;; Author: Maxim Neumann
-;;
 ;; Patched/stolen from many different sources in the time frame 1998-now.
 ;;
 ;; Incomplete list of sources:
