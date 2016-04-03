@@ -1,3 +1,16 @@
+General keybindings (default and customized)
+````````````````````````````````````````````
+
+==========  ==============================
+Keybinding  Description
+==========  ==============================
+C-'         Indent buffer
+C-c n e     Start eshell
+C-c n b     Start bash
+C-c n i     Open emacs' init.el
+==========  ==============================
+
+
 Python anaconda-mode
 ````````````````````
 

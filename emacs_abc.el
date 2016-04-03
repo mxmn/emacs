@@ -30,8 +30,13 @@
 
 ;;; Code:
 
-;;;; helm
 
+;; to silence the info message on function redifinitions, such as
+;; "tramp-read-passwd got redefined"
+(setq ad-redefinition-action 'accept)
+
+
+;;;; helm
 
 (require 'helm-config)
 (helm-mode 1)
@@ -318,6 +323,9 @@
 
 ;;;; Testing modes/packages
 
+
+;;;; Experimental
+
 ;; from J.Smith emacs/latex/auctex page
 ;;Bind shift mouse-3 to the imenu, and meta shift mouse-3 to alphabetical imenu
 ;; it works, mn, 3/11/12
@@ -338,6 +346,60 @@
       (let ((imenu-sort-function
         'imenu--sort-by-name))
    (call-interactively 'imenu)))))
+
+
+;;;; custom functions
+
+(defun my-reload-init ()  ;;; assumes the file is already opened
+  "Reloads my init file."
+  (interactive)
+  (save-some-buffers t)
+  (eval-buffer "emacs_single.el"))
+(global-set-key (kbd "C-c n j")       'my-reload-init)
+
+(defun my-open-init-file ()
+  "Open personal init file."
+  (interactive)
+  (find-file "~/conf/emacs/init.el"))
+(global-set-key (kbd "C-c n i")       'my-open-init-file)
+
+(defun my-indent-buffer ()
+  "Indent entire buffer."
+  (interactive)
+  (save-excursion
+    (indent-region (point-min)(point-max) nil)))
+
+(global-set-key (kbd "C-'") 'my-indent-buffer)
+
+(defun my-vim-help ()
+  (interactive)
+  (let ((command (format ":h \"%s\"" (or (read-string "Enter the help topic") "''"))))
+    (my-open-term command)))
+
+
+;;;; eshell and other terms
+
+(defun my-new-bash ()
+  "Start an ansi-term with bash."
+  (interactive)
+  (ansi-term "/bin/bash"))
+(defun my-new-eshell ()
+  "Start an eshell."
+  (interactive)
+  (eshell t))
+(global-set-key (kbd "C-c n e")        'my-new-eshell)
+(global-set-key (kbd "C-c n b")        'my-new-bash)
+
+;;;; Misc
+
+
+;; `brew install aspell --lang=en` (instead of ispell)
+;; it works, after installation of aspell from find-binary
+(setq-default ispell-program-name "aspell")
+(setq ispell-list-command "list")
+(setq ispell-extra-args '("--sug-mode=ultra"))
+;; zap-up-to-char, forward-to-word, backward-to-word, etc
+(require 'misc)
 
 
 

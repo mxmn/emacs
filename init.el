@@ -81,7 +81,6 @@
         packages-to-be-installed))
 
 
-
 ;;;; Other configuration files
 
 (add-to-list 'load-path "~/conf/emacs")
@@ -94,12 +93,6 @@
 (load-library "emacs_pyconda.el")
 (load-library "emacs_idl.el")
 (load-library "emacs_latex.el")
-
-;;; final ones
-(add-to-list 'load-path "~/conf/emacs24")
-
-(load-library "tobesorted.el")
-(load-library "experimental.el")
 
 
 (message (format-time-string "Emacs startup time: %S s and %3N ms"

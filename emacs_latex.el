@@ -33,9 +33,9 @@
 ;;; 18.04.05
 ;;------------------------ LaTex Options --------------------------
 (add-hook 'TeX-mode-hook
-      '(lambda ()
-         (auto-fill-mode 1)
-         (turn-on-font-lock)))
+          '(lambda ()
+             (auto-fill-mode 1)
+             (turn-on-font-lock)))
 
 
 ;; Cogito, 6-9-93 -- creation du mode LaTeX (different de celui par defaut)
@@ -76,9 +76,9 @@
 
 
 (add-hook 'LaTeX-mode-hook '(lambda ()
-                 (TeX-fold-mode 1)
-                 (outline-minor-mode 1)
-                   ))
+                              (TeX-fold-mode 1)
+                              (outline-minor-mode 1)
+                              ))
 
 (defun LaTeX-custom-hook ()
   "LaTeX mode customizations (for AUC TeX)."
@@ -103,12 +103,56 @@
 ;;(setq TeX-PDF-mode t) - no effect - mn, 11/25/14
 
 
-; BibTeX auto files
+                                        ; BibTeX auto files
 (defun BibTeX-custom-hook ()
   "BibTeX mode customizations (for AUC TeX)."
   (setq TeX-auto-save t))
 
 (add-hook 'bibtex-mode-hook 'BibTeX-custom-hook)
+
+
+
+
+;;;; To be sorted / updated... 1/28/15
+
+(require 'tex-site)
+
+(custom-set-variables
+
+ '(LaTeX-command "latex")
+ '(TeX-PDF-mode t)
+ '(TeX-check-path (quote ("." "/usr/local/share/texmf/tex/" "/usr/local/texlive/2013/texmf-dist/bibtex/bst/" "/usr/local/texlive/2013/texmf-dist/tex/" "/usr/local/texlive/2013/../texmf-local/bibtex/bst/" "/usr/local/texlive/2013/../texmf-local/tex/" "/usr/local/texlive/2013/texmf-var/tex/" "~/Dropbox/sar/doc/bib/")))
+ '(TeX-command-list
+   (quote
+    (
+     ("TeX" "%(PDF)%(tex) %`%S%(PDFout)%(mode)%' %t" TeX-run-TeX nil (plain-tex-mode texinfo-mode ams-tex-mode) :help "Run plain TeX")
+     ("LaTeX" "%`%l%(mode)%' %t" TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")
+     ("xeLaTeX" "xelatex %t" TeX-run-TeX nil (latex-mode))
+     ("Makeinfo" "makeinfo %t" TeX-run-compile nil (texinfo-mode) :help "Run Makeinfo with Info output")
+     ("Makeinfo HTML" "makeinfo --html %t" TeX-run-compile nil (texinfo-mode) :help "Run Makeinfo with HTML output")
+     ("AmSTeX" "%(PDF)amstex %`%S%(PDFout)%(mode)%' %t" TeX-run-TeX nil (ams-tex-mode) :help "Run AMSTeX")
+     ("ConTeXt" "texexec --once --texutil %(execopts)%t" TeX-run-TeX nil (context-mode) :help "Run ConTeXt once")
+     ("ConTeXt Full" "texexec %(execopts)%t" TeX-run-TeX nil (context-mode) :help "Run ConTeXt until completion")
+     ("BibTeX" "bibtex %s" TeX-run-BibTeX nil t :help "Run BibTeX")
+     ("Biber" "biber %s" TeX-run-Biber nil t :help "Run Biber")
+     ("View" "%V" TeX-run-discard-or-function t t :help "Run Viewer")
+     ("Print" "%p" TeX-run-command t t :help "Print the file")
+     ("Queue" "%q" TeX-run-background nil t :help "View the printer queue" :visible TeX-queue-command)
+     ("File" "%(o?)dvips %d -o %f " TeX-run-command t t :help "Generate PostScript file")
+     ("Index" "makeindex %s" TeX-run-command nil t :help "Create index file")
+     ("Check" "lacheck %s" TeX-run-compile nil (latex-mode) :help "Check LaTeX file for correctness")
+     ("Spell" "(TeX-ispell-document \"\")" TeX-run-function nil t :help "Spell-check the document")
+     ("Clean" "TeX-clean" TeX-run-function nil t :help "Delete generated intermediate files")
+     ("Clean All" "(TeX-clean t)" TeX-run-function nil t :help "Delete generated intermediate and output files")
+     ("Other" "" TeX-run-command t t :help "Run an arbitrary command")))
+   )
+ '(TeX-macro-private (quote ("/usr/local/share/texmf/tex/" "~/Dropbox/sar/doc/bib/")))
+
+ '(TeX-view-program-list (quote (("open" "open %o"))))
+ '(TeX-view-program-selection (quote (((output-dvi style-pstricks) "dvips and gv") (output-dvi "xdvi") (output-pdf "open") (output-html "xdg-open"))))
+
+ )
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;           LLLLLL  AAAAAA  TTTTTT  EEEEEE  XXXXXX         ;;;;;;;;;;;

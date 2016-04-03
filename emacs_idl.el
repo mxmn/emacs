@@ -43,8 +43,6 @@
  idlwave-shell-use-dedicated-frame t
  )
 
-(set-face-background my-face "GoldenRod")
-
 ;;; new (from jd's .emacs); mn 05/10
 ;; I'll add this little hook to both the idlwave-mode and
 ;; idlwave-shell-mode hooks, because I'd like the keys in both.
