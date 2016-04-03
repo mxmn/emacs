@@ -318,4 +318,7 @@
 (setq auto-mode-alist (cons '("\\.md$" . markdown-mode) auto-mode-alist))
 
 
+;;;; Testing modes/packages
+
+
 ;;; emacs_abc.el ends here

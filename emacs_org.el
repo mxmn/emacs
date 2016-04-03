@@ -260,18 +260,17 @@
 (setq org-use-speed-commands t)
 
 
-
 ;;;; latex
 
 (require 'ox-latex)
 (unless (boundp 'org-latex-classes)
   (setq org-latex-classes nil))
 
-
 ;; My custom LaTeX class for Org-mode export. require is needed for it to work.
 (add-to-list 'org-latex-classes
              '("notes"
 "\\documentclass[letter,9pt]{article}
+[NO-DEFAULT-PACKAGES]
 \\usepackage[utf8]{inputenc}
 \\usepackage{lmodern}
 \\usepackage[T1]{fontenc}
@@ -279,15 +278,16 @@
 \\usepackage{cite}
 \\usepackage{amsmath,amsthm}
 \\usepackage{amssymb}
-\\usepackage{daytime}
+\\usepackage{datetime}
+\\usepackage{hyperref}
 \\usepackage[scale={0.9}]{geometry}
 
 \\input{mathdefs}
 \\author{mxn}
-\\newcommand\\foo{bar}"
+\\date{\\today, \\currenttime}
+"
+;;               [NO-EXTRA]
 ;;               [DEFAULT-PACKAGES]
-;;               [NO-DEFAULT-PACKAGES]
-;;               [NO-PACKAGES]
 ;;               [EXTRA]"
 ("\\section{%s}" . "\\section*{%s}")
 ("\\subsection{%s}" . "\\subsection*{%s}")
@@ -321,6 +321,7 @@
      ("\\paragraph{%s}" . "\\paragraph*{%s}")
      ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
+(setq org-latex-default-class "notes")
 
 
 ;;;; html
