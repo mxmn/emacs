@@ -318,5 +318,27 @@
 
 ;;;; Testing modes/packages
 
+;; from J.Smith emacs/latex/auctex page
+;;Bind shift mouse-3 to the imenu, and meta shift mouse-3 to alphabetical imenu
+;; it works, mn, 3/11/12
+(when window-system
+  (define-key global-map [S-down-mouse-3] 'imenu)
+  (define-key global-map [M-S-down-mouse-3]
+    (lambda ()
+      (interactive)
+      (let ((imenu-sort-function
+        'imenu--sort-by-name))
+   (call-interactively 'imenu)))))
+;; and, additionally with C-S-mouse-1
+(when window-system
+  (define-key global-map [C-S-down-mouse-1] 'imenu)
+  (define-key global-map [M-C-S-down-mouse-1]
+    (lambda ()
+      (interactive)
+      (let ((imenu-sort-function
+        'imenu--sort-by-name))
+   (call-interactively 'imenu)))))
+
+
 
 ;;; emacs_abc.el ends here

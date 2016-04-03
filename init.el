@@ -2,8 +2,6 @@
 ;;
 ;;; Commentary:
 ;;
-;; Author: Maxim Neumann
-;;
 ;; Patched/stolen from many different sources in the time frame 1998-now.
 ;;
 ;; Incomplete list of sources:
@@ -87,19 +85,18 @@
 ;;;; Other configuration files
 
 (add-to-list 'load-path "~/conf/emacs")
-(load-library "emacs_abc")
 
 ;;; personal/private setup (identity, local directories)
 (load-library "emacs_personal")
 
-;;;; final ones
-(add-to-list 'load-path "~/conf/emacs24")
+(load-library "emacs_abc")
 (load-library "emacs_org.el")
-(load-library "emacs_idl.el")
-;;(load-library "emacs_python4.el")
 (load-library "emacs_pyconda.el")
-
+(load-library "emacs_idl.el")
 (load-library "emacs_latex.el")
+
+;;; final ones
+(add-to-list 'load-path "~/conf/emacs24")
 
 (load-library "tobesorted.el")
 (load-library "experimental.el")
