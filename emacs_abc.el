@@ -306,6 +306,33 @@
 (setq flycheck-keymap-prefix (kbd "C-c *")) ;; changing the flycheck prefix to C-c *
 
 
+;;;; Projectile
+
+;; enable everywhere
+(projectile-global-mode)
+
+(setq projectile-completion-system 'helm)
+
+;; enabling projectile only in python projects for now
+(add-hook 'python-mode-hook 'projectile-mode)
+;; enable chaching unconditionally for all indexing types
+;; would need cache update if file structure changes
+;; (setq projectile-enable-caching t)
+
+;; using the Super key for selected projectile commands
+(define-key projectile-mode-map [?\s-d] 'projectile-find-dir)
+(define-key projectile-mode-map [?\s-p] 'projectile-switch-project)
+(define-key projectile-mode-map [?\s-f] 'projectile-find-file)
+(define-key projectile-mode-map [?\s-g] 'projectile-grep)
+
+
+;;;; helm-projectile
+
+;; (setq helm-projectile-fuzzy-match nil)
+(require 'helm-projectile)
+(helm-projectile-on)
+
+
 
 ;;;; Major modes
 
@@ -360,8 +387,15 @@
 (defun my-open-init-file ()
   "Open personal init file."
   (interactive)
-  (find-file "~/conf/emacs/init.el"))
-(global-set-key (kbd "C-c n i")       'my-open-init-file)
+  (find-file (concat my-emacs-path "init.el")))
+(global-set-key (kbd "C-c n i") 'my-open-init-file)
+
+(defun my-open-init-abc-file ()
+  "Open personal init file."
+  (interactive)
+  (find-file (concat my-emacs-path "emacs_abc.el")))
+(global-set-key (kbd "C-c n a") 'my-open-init-abc-file)
+
 
 (defun my-indent-buffer ()
   "Indent entire buffer."

@@ -169,27 +169,27 @@
 (defun gtd-folders ()
     (interactive)
     (find-file (concat my-org-path "folders.org")))
-
 (global-set-key (kbd "C-c f") 'gtd-folders)
+
 (defun gtd-projects ()
     (interactive)
     (find-file (concat my-org-path "projects.org")))
+;;(global-set-key (kbd "C-c p") 'gtd-projects) - used as projectile prefix
+(global-set-key (kbd "C-c r") 'gtd-projects)
 
-(global-set-key (kbd "C-c p") 'gtd-projects)
 (defun gtd-amzn ()
     (interactive)
     (find-file (concat my-org-path "amzn.org")))
-
 (global-set-key (kbd "C-c m") 'gtd-amzn)
-(defun gtd-research ()
-    (interactive)
-    (find-file (concat my-org-path "research.org")))
 
-(global-set-key (kbd "C-c r") 'gtd-research)
+;; (defun gtd-research ()
+;;     (interactive)
+;;     (find-file (concat my-org-path "research.org")))
+;; (global-set-key (kbd "C-c r") 'gtd-research)
+
 (defun gtd-journal ()
     (interactive)
     (find-file (concat my-org-path "journal.org")))
-
 (global-set-key (kbd "C-c j") 'gtd-journal)
 
 

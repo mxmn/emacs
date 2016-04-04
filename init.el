@@ -54,9 +54,10 @@
 
 
 (require 'package)
-;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
 ;; For fast automatic installation on a new system
@@ -65,7 +66,8 @@
      default-text-scale
      magit
      helm
-     ;;helm-projectile
+     projectile
+     ;;helm-projectile -- needs melpa, not melpa-stable
      helm-descbinds
      flycheck
      markdown-mode

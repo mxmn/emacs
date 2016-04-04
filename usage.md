@@ -1,6 +1,17 @@
 
 ### Projectile Default Interactive Commands
 
+
+Keybinding  | Action
+------------|------------------------
+C-c p f     | Find a file in the project
+C-c p p     | Switch project
+C-c p g     | Run grep on all files in the project
+C-c p b     | Switch between buffers for the project
+C-c p r     | Run query-replace for all files in the project (for refactoring)
+C-c p k     | Kill all open buffers for the project
+
+
 Here's a list of the interactive Emacs Lisp functions, provided by Projectile:
 
 Keybinding         | Description
