@@ -27,6 +27,7 @@ M-?         anaconda-mode-show-doc
 
 
 Helm-projectile-mode
+````````````````````
 
 ==========  ==============================
 Keybinding  Description
