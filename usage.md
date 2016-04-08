@@ -1,3 +1,17 @@
+## Selected Emacs Shortcuts/Commands to Master
+
+### Top Non-Standard commands
+
+#### Helm - Projectile - Company
+
+Keybinding  | Action
+------------|------------------------
+C-c p h     | Helm projectile find file / project
+C-c p r     | Projectile replace in all project files
+C-i         | Helm I-Menu
+C-o         | Helm occur (in file)
+
+
 
 ### Projectile Default Interactive Commands
 
