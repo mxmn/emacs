@@ -2,14 +2,14 @@
 
 ### Top Non-Standard commands
 
-#### Helm - Projectile - Company
+#### Helm - Projectile - Company - Magit
 
 Keybinding  | Action
 ------------|------------------------
 C-c p h     | Helm projectile find file / project
 C-c p r     | Projectile replace in all project files
-C-i         | Helm I-Menu
-C-o         | Helm occur (in file)
+C-i         | Helm I-Menu [rebinded]
+C-o         | Helm occur (in file) [rebinded]
 
 
 
