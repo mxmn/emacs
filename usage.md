@@ -8,8 +8,18 @@ Keybinding  | Action
 ------------|------------------------
 C-c p h     | Helm projectile find file / project
 C-c p r     | Projectile replace in all project files
+C-c p p     | Projectile switch projects
 C-i         | Helm I-Menu [rebinded]
 C-o         | Helm occur (in file) [rebinded]
+
+
+#### Flyckeck (including pylint)
+
+Keybinding  | Action
+------------|------------------------
+C-c n n     | Flycheck goto next error [custom rebinded]
+C-c n p     | Flycheck goto previous error [custom rebinded]
+C-c n l     | Flycheck list errors
 
 
 

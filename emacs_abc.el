@@ -194,6 +194,8 @@
           (lambda () (if (not indent-tabs-mode)
                          (untabify (point-min) (point-max))) nil ))
 
+;; enable subword-mode (CamelCase word movements )for all programming modes
+(add-hook 'prog-mode-hook 'subword-mode)
 
 
 ;;;; Text scaling
@@ -280,8 +282,8 @@
 (setq flycheck-pylintrc ".pylintrc")
 (setq flycheck-keymap-prefix (kbd "C-c *")) ;; changing the flycheck prefix to C-c *
 (global-set-key (kbd "C-c n n") 'flycheck-next-error)
-(global-set-key (kbd "C-c n p") 'flycheck-prev-error)
-
+(global-set-key (kbd "C-c n p") 'flycheck-previous-error)
+(global-set-key (kbd "C-c n l") 'flycheck-list-errors)
 
 
 ;;;; Projectile

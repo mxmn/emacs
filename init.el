@@ -52,7 +52,6 @@
 
 ;;;; Package management
 
-
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
@@ -67,7 +66,7 @@
      magit
      helm
      projectile
-     ;;helm-projectile -- needs melpa, not melpa-stable
+     helm-projectile
      helm-descbinds
      flycheck
      markdown-mode
