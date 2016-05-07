@@ -116,3 +116,54 @@ add to your Emacs config:
 
 Note that the `Super` keybindings are not usable in Windows. Emacs
 Prelude already adds those extra keybindings.
+
+
+### Emacs Key Bindings
+Based on the
+[article])(https://www.masteringemacs.org/article/mastering-key-bindings-emacs)
+by Mickey Petersen.
+
+*Keymap* is an internal data structure to store keys and their
+ associated actions. Every buffer and most major and minor modes have
+ a keymap.
+
+*Keys* can be divided into three categories: *undefined*, *prefix
+ key*, and *complete key*.
+
+To learn more about key bindings use `C-h m` to get all defined keys
+bindings in the current buffer. Or, type a *prefix key*, followed by
+`C-h` to get a list of all keys that belong to that
+prefix. Alternatively, type first `C-h k` followed by your *complete
+key* to get to know what it does.
+
+Useful commands:
+
+```elisp
+(define-key KEYMAP KEY COMMAND)
+```
+Define a key against a keymap of a major/minor mode.
+
+`(global-set-key KEY COMMAND)`
+
+Binds a key to the global keymap.
+
+`(global-unset-key KEY)`: removes KEY from the global keymap.
+
+There are different ways to represent keys in code. Recommended (and used by me) is using the built-in macro `kbd` that translates a human readable key into a format Emacs can understand. Functions and navigation keys have to be surrounded by `<` and `>`. Examples: `(kbd "C-c p")`, or `(kbd "<f12>")`; `(kbd "C-<left>")`. Modifier keys: Control: `C-`; Shift: `S-`; Meta: `M-`; Hyper: `H-`; super: `s-` (lower-case-s)
+
+
+
+#### Ideas for selected key rebindings from
+[Mickey](https://www.masteringemacs.org/article/my-emacs-keybindings):
+
+Key binding | Description
+------------|-------------
+M-o         | other-window, to replace C-x o
+C-<return>  | custom Helm command
+M-`         | Jump around in the mark ring
+C-=         | bind to `cssh-term-remote-open` to open a remote host via ssh using `M-x ansi-term`
+M-n / M-p   | smart scan next/previous commands
+S-C-<left/right/down/up> | shrink/enlarge window horizontally/vertically
+F2          | `M-x rgrep` -- very useful
+ | `multi-occur-in-this-mode` - run `M-x occur` but against *all buffers* of the same major mode. Very useful.
+ | `magit-status`
