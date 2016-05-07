@@ -2,6 +2,14 @@
 
 ### Top Non-Standard commands
 
+Keybinding    | Description
+--------------|-------------
+`M-o`         | `other-window`, to replace `C-x o`
+`C-c C-l`     | `goto-line`
+`C-M-=`       | Increase font size
+`C-M--`       | Decrease font size
+
+
 #### Helm - Projectile - Company - Magit
 
 Keybinding  | Action
@@ -138,18 +146,21 @@ key* to get to know what it does.
 
 Useful commands:
 
-```elisp
-(define-key KEYMAP KEY COMMAND)
-```
-Define a key against a keymap of a major/minor mode.
+`(define-key KEYMAP KEY COMMAND)`: Define a key against a keymap of a major/minor mode. Keymap example: `python-mode-map`.
 
-`(global-set-key KEY COMMAND)`
-
-Binds a key to the global keymap.
+`(global-set-key KEY COMMAND)`: Binds a key to the global keymap.
 
 `(global-unset-key KEY)`: removes KEY from the global keymap.
 
-There are different ways to represent keys in code. Recommended (and used by me) is using the built-in macro `kbd` that translates a human readable key into a format Emacs can understand. Functions and navigation keys have to be surrounded by `<` and `>`. Examples: `(kbd "C-c p")`, or `(kbd "<f12>")`; `(kbd "C-<left>")`. Modifier keys: Control: `C-`; Shift: `S-`; Meta: `M-`; Hyper: `H-`; super: `s-` (lower-case-s)
+There are different ways to represent keys in code. Recommended (and
+used by me) is using the built-in macro `kbd` that translates a human
+readable key into a format Emacs can understand. Functions and
+navigation keys have to be surrounded by `<` and `>`.
+
+Examples: `(kbd "C-c p")`, or `(kbd "<f12>")`; `(kbd "C-<left>")`.
+
+Modifier keys: Control: `C-`; Shift: `S-`; Meta: `M-`; Hyper: `H-`;
+super: `s-` (lower-case-s).
 
 
 
@@ -158,12 +169,12 @@ There are different ways to represent keys in code. Recommended (and used by me)
 
 Key binding | Description
 ------------|-------------
-M-o         | other-window, to replace C-x o
-C-<return>  | custom Helm command
-M-`         | Jump around in the mark ring
-C-=         | bind to `cssh-term-remote-open` to open a remote host via ssh using `M-x ansi-term`
-M-n / M-p   | smart scan next/previous commands
-S-C-<left/right/down/up> | shrink/enlarge window horizontally/vertically
-F2          | `M-x rgrep` -- very useful
+`M-o`         | other-window, to replace C-x o
+`C-<return>`  | custom Helm command
+`M-```        | Jump around in the mark ring
+`C-=`         | bind to `cssh-term-remote-open` to open a remote host via ssh using `M-x ansi-term`
+`M-n / M-p`   | smart scan next/previous commands
+`S-C-<left/right/down/up>` | shrink/enlarge window horizontally/vertically
+`F2`          | `M-x rgrep` -- very useful
  | `multi-occur-in-this-mode` - run `M-x occur` but against *all buffers* of the same major mode. Very useful.
  | `magit-status`
