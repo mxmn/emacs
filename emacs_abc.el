@@ -154,10 +154,7 @@
 ;;(fset 'yes-or-no-p 'y-or-n-p)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 (defalias 'yes-or-no-p 'y-or-n-p) ;; "y or n" instead of "yes or no"
-(global-set-key "\C-c\C-l" 'goto-line) ;; goto-line keybinding
 (setq fill-column 79)  ;; Python style recommends limiting line lengths to 79 chars.
-(global-set-key (kbd "C-S-b") 'bookmark-jump) ;; jump to bookmark
-
 
 ;; Electric mode settings
 (electric-pair-mode 1) ;; automatic closure of {},[],() and going inside
@@ -198,12 +195,6 @@
 (add-hook 'prog-mode-hook 'subword-mode)
 
 
-;;;; Text scaling
-
-(global-set-key (kbd "C-M-=")         'default-text-scale-increase)
-(global-set-key (kbd "C-M--")         'default-text-scale-decrease)
-
-
 ;;;; Fringe settings
 
 (fringe-mode '(5 . 5)) ;; constraining text to the left
@@ -211,9 +202,26 @@
 (setq-default indicate-empty-lines t) ;; Explicitly show the end of a buffer
 
 
-;;;; Window navigation: M-arrow-keys
+;;;; Key re-bindings (motion, windows)
 
-;; except in the org mode (which uses the keybindings as well)
+;; As recommended, try to keep this to a minimum to only rebind most often used keys.
+
+(global-set-key "\C-c\C-l" 'goto-line) ;; goto-line keybinding
+(global-set-key (kbd "C-S-b") 'bookmark-jump) ;; jump to bookmark
+(global-set-key (kbd "M-o") 'other-window) ;; replaces C-x o
+
+;; Resizing window - doesn't seem to work currently
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'enlarge-window)
+(global-set-key (kbd "S-C-<up>") 'shrink-window)
+
+;; Text scaling
+(global-set-key (kbd "C-M-=")         'default-text-scale-increase)
+(global-set-key (kbd "C-M--")         'default-text-scale-decrease)
+
+;; Window navigation: M-arrow-keys
+;; - except in the org mode (which uses the keybindings as well)
 (if (equal nil (equal major-mode 'org-mode))
     (windmove-default-keybindings 'meta))
 ;; mapping them as well to Alt-Cmd (same as in iTerm)
