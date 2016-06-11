@@ -59,6 +59,40 @@ worth knowing the basic keybindings:
 | =C-h k= | Info on keybding                     |
 
 
+* To be sorted
+
+*** Working with Log Files
+Emacs has an /auto compression mode/ that automatically de-compresses
+and re-compresses files when you open and save them. Combined with
+=M-x dired= one can browse compressed archives like directories.
+
+The auto-revert mode can be very useful as well to monitor changing files.
+|-----------------------------+---------------------------------------------------|
+| =C-x C-r=                   | Open file in read-only mode                       |
+| =C-x C-q=                   | Toggle read-only mode                             |
+| =M-x flush-lines=           | Flush lines matching a pattern                    |
+| =M-x keep-lines=            | Keep only lines matching a pattern                |
+| =M-s o=                     | List lines matching a pattern                     |
+| =M-s h p=                   | Highlight a phrase                                |
+| =M-s h r=                   | Highlight regular expression                      |
+| =M-s h .=                   | Highlight symbol at the point                     |
+| =M-s h u=                   | Removes highlighting under point                  |
+| =M-x auto-revert-mode=      | Reverts buffer when file changes                  |
+| =M-x auto-revert-tail-mode= | Appends changes and follows; similar to =tail -f= |
+
+*** TRAMP: Remote File Editing
+First, change the default protocol =tramp-default-method= to use
+=ssh=. The TRAMP connections follow the syntax:
+: /ssh:[user@]hostname[#port]:path
+where =user= and =port= are optional, and tramp uses the =.ssh/config=
+configuration as well.
+
+One can start shells on the remote host and execute a lot of other commands.
+
+Add as well the =sudo= command to the init file to switch to the sudo
+mode when editing a file.
+
+
 
 * COMMENT Configuration
 #+TITLE: Emacs Usage
