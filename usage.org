@@ -1,0 +1,65 @@
+* Emacs Basic Commands and Functionality
+Things that I tend to forget after a while, and which are good to revisit from time to time.
+
+*Starting Emacs options*
+|-------+------------------------------------------------------------------|
+| ~-nw~ | terminal mode                                                    |
+| ~-q~  | do not load an init file                                         |
+| ~-Q~  | do not load any startup files (site-wide; X resorces, your init) |
+
+*Keys*
+|------+---------------------------|
+| =C-= | Control                   |
+| =M-= | Meta (Alt)                |
+| =S-= | Shift                     |
+| =s-= | Super                     |
+| =H-= | Hyper                     |
+| =A-= | Alt (redundant; not used) |
+
+*Universal Arguments* Worth learning to use them (including digit and
+negative arguments). Note the flexebility to maintain your tempo.
+|----------------------------------+-------------------------------------|
+| =C-u=                            | digit argument                    4 |
+| =C-u C-u=                        | digit argument 16                   |
+| =C-u= =...=                      | digit argument $4^n$                |
+| =M-0= or =C-0= to =M-9= or =C-9= | digit argument 0 to 9               |
+| =C--= or =M--= or =C-M--=        | negative argument                   |
+
+*Elisp Code*
+|-------------------+-----------------|
+| =M-x eval buffer= | evaluate buffer |
+| =M-x eval-region= | evaluate region |
+
+*Package Management*
+
+Add the ~ELPA~ (official), and ~Melpa~ and ~Marmelade~ (unofficial)
+package repositories to your init file. The inofficial sites might go
+down. Check the Emacs Wiki if problems appear.
+
+*The Info Manual*
+
+It's immensly useful to get information fast and convenient. It's
+worth knowing the basic keybindings:
+|-------------+--------------------------------------|
+| =[= and =]= | Previous / next node                 |
+| =l= and =r= | Go back / forward in history         |
+| =p= and =n= | Previous / next sibling mode         |
+| =u=         | Goes up one level                    |
+| =SPC=       | Scroll one screen at a time          |
+| =TAB=       | Cycles through links                 |
+| =RET=       | Opens link                           |
+| =m=         | Prompts for a menu item name to open |
+
+*Emacs Help*
+|---------+--------------------------------------|
+| =C-a=   | Apropos command                      |
+| =C-h m= | Info on major/minor mode (check it!) |
+| =C-h f= | Info on function                     |
+| =C-h v= | Info on variable                     |
+| =C-h k= | Info on keybding                     |
+
+
+
+* COMMENT Configuration
+#+TITLE: Emacs Usage
+#+AUTHOR: mxn
