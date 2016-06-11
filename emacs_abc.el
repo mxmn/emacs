@@ -155,6 +155,7 @@
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 (defalias 'yes-or-no-p 'y-or-n-p) ;; "y or n" instead of "yes or no"
 (setq fill-column 79)  ;; Python style recommends limiting line lengths to 79 chars.
+(setq tramp-default-method "ssh")
 
 ;; Electric mode settings
 (electric-pair-mode 1) ;; automatic closure of {},[],() and going inside
@@ -426,6 +427,14 @@
   (let ((command (format ":h \"%s\"" (or (read-string "Enter the help topic") "''"))))
     (my-open-term command)))
 
+;; switch to `sudo` mode while editing a file (from "mastering emacs")
+(defun sudo ()
+  "Use TRAMP to `sudo' the current buffer"
+  (interactive)
+  (when buffer-file-name
+    (find-alternate-file
+     (concat "/sudo:root@localhost:"
+             buffer-file-name))))
 
 ;;;; eshell and other terms
 
