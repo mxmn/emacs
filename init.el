@@ -45,8 +45,8 @@
 
 ;; Window size
 (when window-system
-  (set-frame-size (selected-frame) 86 71))
-(setq default-frame-alist '((width . 86)(height . 71)))
+  (set-frame-size (selected-frame) 100 71))
+(setq default-frame-alist '((width . 100)(height . 71)))
 
 
 
@@ -70,7 +70,14 @@
      helm-descbinds
      flycheck
      markdown-mode
+     company
      ))
+;; packages needed to be installed manually on a linux machine (emacs 24.5)
+;; - helm
+;; - key-binding
+;; - helm-descbinds
+;;
+
 
 (defun mxn-install-packages ()
   "Install only the sweetest of packages."

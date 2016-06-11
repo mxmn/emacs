@@ -4,10 +4,10 @@
 
 Keybinding    | Description
 --------------|-------------
-`M-o`         | `other-window`, to replace `C-x o`
-`C-c C-l`     | `goto-line`
-`C-M-=`       | Increase font size
-`C-M--`       | Decrease font size
+M-o         | `other-window`, to replace C-x o
+C-c C-l     | `goto-line`
+C-M-=       | Increase font size
+C-M--       | Decrease font size
 
 
 #### Helm - Projectile - Company - Magit
@@ -169,9 +169,8 @@ super: `s-` (lower-case-s).
 
 Key binding | Description
 ------------|-------------
-`M-o`         | other-window, to replace C-x o
 `C-<return>`  | custom Helm command
-`M-```        | Jump around in the mark ring
+`M-``        | Jump around in the mark ring
 `C-=`         | bind to `cssh-term-remote-open` to open a remote host via ssh using `M-x ansi-term`
 `M-n / M-p`   | smart scan next/previous commands
 `S-C-<left/right/down/up>` | shrink/enlarge window horizontally/vertically
