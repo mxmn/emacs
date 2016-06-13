@@ -60,6 +60,7 @@
 (package-initialize)
 
 ;; For fast automatic installation on a new system
+;; - use the mxn-install-packages command function, as defined below
 (defvar packages-to-be-installed
   '( use-package
      default-text-scale
@@ -71,9 +72,9 @@
      flycheck
      markdown-mode
      company
+     auctex
      ))
 ;; packages needed to be installed manually on a linux machine (emacs 24.5)
-;; - helm
 ;; - key-binding
 ;; - helm-descbinds
 ;;
