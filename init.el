@@ -59,9 +59,9 @@
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (package-initialize)
 
-;; For fast automatic installation on a new system
+;; For fast automatic installation on a new system:
 ;; - use the mxn-install-packages command function, as defined below
-(defvar packages-to-be-installed
+(defvar my-packages-to-be-installed
   '( use-package
      default-text-scale
      magit
@@ -74,20 +74,14 @@
      company
      auctex
      ))
-;; packages needed to be installed manually on a linux machine (emacs 24.5)
-;; - key-binding
-;; - helm-descbinds
-;;
-
-
-(defun mxn-install-packages ()
+(defun install-my-packages ()
   "Install only the sweetest of packages."
   (interactive)
   (package-refresh-contents)
   (mapc #'(lambda (package)
             (unless (package-installed-p package)
               (package-install package)))
-        packages-to-be-installed))
+        my-packages-to-be-installed))
 
 
 ;;;; Other configuration files
