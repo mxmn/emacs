@@ -1,17 +1,18 @@
 * Currently Adapting
 
 Using the s-expression:
-|---------+-------------------------------|
-| =C-M-f= | Move forward by s-expression  |
-| =C-M-b= | Move backward by s-expression |
-| =C-M-k= | Kill s-expression             |
+|-------------+-------------------------------|
+| =C-M-f=     | Move forward by s-expression  |
+| =C-M-b=     | Move backward by s-expression |
+| =C-M-k=     | Kill s-expression             |
+| =C-M-<SPC>= | Mark next s-expression        |
 
 Use /other-window/ commands:
-|--------------------+----------------------------------------|
-| =C-M-v=, =C-M-S-v= | Scroll other window                    |
-| =C-x 4 C-f=        | Find file (go to other window)         |
-| =C-x 4 C-o=        | Display buffer (stay in same window)   |
-| =C-x 4 b=          | Switch buffer (and go to other window) |
+|----------------------------+----------------------------------------|
+| =C-M-v=\ \ or\ \ =C-M-S-v= | Scroll other window                    |
+| =C-x 4 C-f=                | Find file (go to other window)         |
+| =C-x 4 C-o=                | Display buffer (stay in same window)   |
+| =C-x 4 b=                  | Switch buffer (and go to other window) |
 
 Save of regions in register and insert them in text:
 |-----------+---------------------------|
@@ -32,9 +33,9 @@ Using the /mark-ring/ more efficiently:
 | =C-M-h=                      | Next defun          |
 
 Search and Replace:
-|---------------------+----------------------------|
-| =C-M-s=,\ \ =C-M-r= | Regexp incremental search  |
-| =M-s .=             | Search for symbol at point |
+|--------------------------+----------------------------|
+| =C-M-s=\ \ or\ \ =C-M-r= | Regexp incremental search  |
+| =M-s .=                  | Search for symbol at point |
 
 |-----------------+--------------------------------------|
 | =M-n=,\ \ =M-p= | Next/previous item in search history |
