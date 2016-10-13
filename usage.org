@@ -1,3 +1,13 @@
+* Usefuls to have
+- indent a region in org, or python, by a certain amount (n spaces)
+  - or, remove =n= spaces in from of a region
+- insert =#+BEGIN_EXAMPLE ..\n #+END_EXAMPLE= template into org
+- directory tree / project tree structure
+  - https://www.emacswiki.org/emacs/NeoTree
+  - http://emacs.stackexchange.com/questions/413/tree-based-directory-browser
+  - http://stackoverflow.com/questions/843645/a-good-project-tree-browser-for-emacs
+
+
 * Currently Adapting
 
 Using the s-expression:
