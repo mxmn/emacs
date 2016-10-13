@@ -253,7 +253,7 @@
 ;;(setq org-todo-keywords
 ;;              '((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
 (setq org-todo-keywords
-                '((sequence "TODO(t)" "PROJ(p)" "STARTED(s)" "NEXT(x)" "|" "DONE(d)" "CANCELLED(c)" "DEFERRED(f)")))
+                '((sequence "TODO(t)" "PROJ(p)" "STARTED(s)" "NEXT(x)" "|" "INFO(i)" "DONE(d)" "CANCELLED(c)" "DEFERRED(f)")))
 
 ;; mn, 5/18/12
 ;; use speed-commands in all .org files (as in the agenda), type ? in front of *
