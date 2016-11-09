@@ -30,11 +30,21 @@
 
 ;;; to use anaconda python
 
+;; (setq
+;;  python-shell-interpreter "ipython"
+;;  ;; python-shell-interpreter "~/progs/anaconda/envs/py35/bin/ipython"
+;;  python-shell-interpreter-args ""
+;;  python-shell-prompt-regexp "I\\[[0-9]+\\]: "
+;;  python-shell-prompt-output-regexp "O\\[[0-9]+\\]: "
+;;  )
+
 (setq
- python-shell-interpreter "ipython"
+ ;; python-shell-interpreter "ipython"
+ python-shell-interpreter "~/progs/anaconda/envs/py35/bin/python"
  python-shell-interpreter-args ""
- python-shell-prompt-regexp "I\\[[0-9]+\\]: "
- python-shell-prompt-output-regexp "O\\[[0-9]+\\]: ")
+ python-shell-prompt-regexp "I> "
+ python-shell-prompt-output-regexp "O> "
+ )
 
 
 ;;; sometimes this gave me problems.
@@ -57,7 +67,7 @@
 
 
 (defun mxn-python-hook()
-  (setq fill-column 79)
+  (setq fill-column 99)  ;; changed from 79 -- mxn, 9/25/16
   ;; (electric-indent-mode -1) ;; recommended to remove with "-1"
   (setq word-wrap nil) ;; wrap by words
   (visual-line-mode -1)

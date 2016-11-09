@@ -1,3 +1,19 @@
+* Usefuls to have
+- indent a region in org, or python, by a certain amount (n spaces)
+  - or, remove =n= spaces in from of a region
+  - Solution:
+    - =C-u C-x TAB= - indents by 4 spaces
+    - =C-u <number> C-x TAB= - indents by <number> spaces
+  - alternative:
+    - =C-x TAB= - and then type left, right, or Shift-Left, Shift-Right
+
+- insert =#+BEGIN_EXAMPLE ..\n #+END_EXAMPLE= template into org
+- directory tree / project tree structure
+  - https://www.emacswiki.org/emacs/NeoTree
+  - http://emacs.stackexchange.com/questions/413/tree-based-directory-browser
+  - http://stackoverflow.com/questions/843645/a-good-project-tree-browser-for-emacs
+
+
 * Currently Adapting
 
 Using the s-expression:
@@ -47,6 +63,12 @@ Other Movement Commands:
 | =C-M-l=     | Re-positions the comment or definition     |
 | =M-g M-g=   | Goto line                                  |
 | =M-g <TAB>= | Goto column                                |
+
+Other Editing Commands:
+|---------------------+-----------------------------------------------|
+| =C-x TAB=           | Then, left, right, or Shift-left, Shift-right |
+| =C-u C-x TAB=       | Moves 4 spaces                                |
+| =C-u <num> C-x TAB= | Moves <num> spaces                            |
 
 
 And the /always present/ modes / commands:
