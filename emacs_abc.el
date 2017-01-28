@@ -270,6 +270,15 @@
 ;;; C-x r l   - List bookmarks
 
 
+;;;; undo-tree
+;;; C-x u   - visualize undo-tree
+;;; C-_ or C-/    - undo
+;;; M-_ or C-?    - redo
+;;; See more key-bindings: http://www.dr-qubit.org/undo-tree/undo-tree.el
+(require 'undo-tree)
+(global-undo-tree-mode 1)
+
+
 ;;;; Flyspell
 
 ;; with M-\t (M-TAB), Flyspell replaces current miss-spelled word with a
@@ -449,6 +458,7 @@
   (eshell t))
 (global-set-key (kbd "C-c n e")        'my-new-eshell)
 (global-set-key (kbd "C-c n b")        'my-new-bash)
+
 
 ;;;; Misc
 

@@ -54,7 +54,7 @@
 
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
+             '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (package-initialize)
@@ -100,5 +100,10 @@
 
 (message (format-time-string "Emacs startup time: %S s and %3N ms"
                              (time-subtract (current-time) time-start)))
+
+;;; Other manually downloaded packages
+;; e.g. the undo-tree that I was not able to install via melpa on 01/28/17
+(add-to-list 'load-path "~/conf/emacs/lisp/")
+
 
 ;;; init.el ends here
