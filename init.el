@@ -41,7 +41,8 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 ;(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (setq inhibit-startup-screen t) ;; No splash screen please... jeez
-(load-theme 'deeper-blue) ;;; set the color theme early on
+
+
 
 ;; Window size
 (when window-system
@@ -61,6 +62,7 @@
 
 ;; For fast automatic installation on a new system:
 ;; - use the mxn-install-packages command function, as defined below
+;; - if elpa/melpa complains, try to run pacakge-refresh-contents
 (defvar my-packages-to-be-installed
   '( use-package
      default-text-scale
@@ -73,6 +75,9 @@
      markdown-mode
      company
      auctex
+     undo-tree
+     cdlatex
+     writeroom-mode
      ))
 (defun install-my-packages ()
   "Install only the sweetest of packages."
@@ -103,7 +108,19 @@
 
 ;;; Other manually downloaded packages
 ;; e.g. the undo-tree that I was not able to install via melpa on 01/28/17
-(add-to-list 'load-path "~/conf/emacs/lisp/")
+;; - However, if not able to find package in melpa, do a package-refresh-contents!
+;; (add-to-list 'load-path "~/conf/emacs/lisp/")
+
+
+;;;; Theme setup
+;; (load-theme 'deeper-blue) ;;; set the color theme early on
+;; (load-theme 'dracula t)
+;; (load-theme 'zenburn t)
+;; (load-theme 'sanityinc-tomorrow-day t)  ;; light
+;; (load-theme 'sanityinc-tomorrow-night t)
+;; (load-theme 'solarized-dark t)
+;; (load-theme 'solarized-light t)    ;; ++ light + easy on eyes
+(load-theme 'monokai t)     ;; ++ medium
 
 
 ;;; init.el ends here

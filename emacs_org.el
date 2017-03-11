@@ -261,7 +261,6 @@
 
 
 ;;;; latex
-
 (require 'ox-latex)
 (unless (boundp 'org-latex-classes)
   (setq org-latex-classes nil))
@@ -282,9 +281,16 @@
 \\usepackage{hyperref}
 \\usepackage[scale={0.9}]{geometry}
 
+% These lines makes lists work better:
+% It eliminates whitespace before/within a list and pushes it tt the left margin
+\\usepackage{enumitem}
+\\setlist[enumerate,itemize]{noitemsep,nolistsep,leftmargin=*}
+
 \\input{mathdefs}
-\\author{mxn}
+% \\author{mn}
 \\date{\\today, \\currenttime}
+\\setlength{\\parindent}{0pt}
+\\setlength{\\parskip}{4pt}
 "
 ;;               [NO-EXTRA]
 ;;               [DEFAULT-PACKAGES]
@@ -322,6 +328,57 @@
      ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 (setq org-latex-default-class "notes")
+
+
+;;;; latex updated for org-mode (3/11/17)
+
+;;; http://www.clarkdonley.com/blog/2014-10-26-org-mode-and-writing-papers-some-tips.html
+;;; http://www.draketo.de/english/emacs/writing-papers-in-org-mode-acpd
+;; 1. hook flyspell into org-mode
+(add-hook 'org-mode-hook 'flyspell-mode)
+(add-hook 'org-mode-hook 'flyspell-buffer)
+;; 2. Ignore message flags (every time an org file is opened)
+(setq flyspell-issue-message-flag nil)
+;; 3. ignore tex commands in spell checking
+(add-hook 'org-mode-hook (lambda () (setq ispell-parser 'tex)))
+(defun flyspell-ignore-tex ()
+  (interactive)
+  (set (make-variable-buffer-local 'ispell-parser) 'tex))
+(add-hook 'org-mode-hook 'flyspell-ignore-tex)
+
+;; using CD LaTeX to enter math - install cdlatex
+;; https://www.gnu.org/software/emacs/manual/html_node/org/CDLaTeX-mode.html
+;; C-c {  - insert environment
+;; TAB    - expand latex command
+;; _ or ^ - extend with braces in latex command
+;; `      - math symbols/macros
+;; '      - after a latex symbol, modifies font or accent
+(add-hook 'org-mode-hook 'turn-on-org-cdlatex)
+
+;;;http://www.draketo.de/english/emacs/writing-papers-in-org-mode-acpd
+(require 'reftex-cite)
+(setq reftex-default-bibliography '("/Users/maximn/sar/doc/bib/polinsar.bib"))
+(defun org-mode-reftex-setup ()
+  (interactive)
+  (and (buffer-file-name) (file-exists-p (buffer-file-name))
+       (progn
+        ; Reftex should use the org file as master file. See C-h v TeX-master for infos.
+        (setq TeX-master t)
+        (turn-on-reftex)
+        ; enable auto-revert-mode to update reftex when bibtex file changes on disk
+        (global-auto-revert-mode t) ; careful: this can kill the undo
+                                    ; history when you change the file
+                                    ; on-disk.
+        (reftex-parse-all)
+        ; add a custom reftex cite format to insert links
+        ; This also changes any call to org-citation!
+        (reftex-set-cite-format
+         '((?c . "\\citet{%l}") ; natbib inline text
+           (?i . "\\citep{%l}") ; natbib with parens
+           ))))
+  (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
+  (define-key org-mode-map (kbd "C-c (") 'org-mode-reftex-search))
+(add-hook 'org-mode-hook 'org-mode-reftex-setup)
 
 
 ;;;; html
