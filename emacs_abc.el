@@ -119,6 +119,19 @@
               (define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history)))
 
 
+;;;; Yasnippet
+;; not used yet
+;; for org, check http://orgmode.org/manual/Easy-Templates.html
+;; -->   <-e-TAB
+
+;;;; Insert matching parentheses
+;; M-(  - is available by default!
+(global-set-key (kbd "M-[") 'insert-pair)  ;; [ ]
+;; (global-set-key (kbd "M-{") 'insert-pair)  ;; { }
+(global-set-key (kbd "M-\"") 'insert-pair) ;; " "
+;; (global-set-key (kbd "M-)") 'delete-pair)  ;; deleting matching whatevers is
+
+
 ;;;; Imenu
 
 (require 'imenu)
